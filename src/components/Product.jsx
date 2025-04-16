@@ -19,7 +19,7 @@ export default function Product() {
       <ul>
         {data.map((item) => (
           <li key={item.name}>
-            <Card />
+            <Card item={item} />
           </li>
         ))}
       </ul>
