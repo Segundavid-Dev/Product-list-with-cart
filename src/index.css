@@ -2,6 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text&display=swap");
 @import "tailwindcss";
 
+@theme {
+  --product-name-font-size: 16px;
+  --dark-red: hsl(14, 65%, 9%);
+  --light-red: hsl(12, 20%, 44%);
+  --cart-red: hsl(14, 86%, 42%);
+  --product-category-color: grey;
+}
+
 body {
   font-family: "Red Hat Text", sans-serif;
   background-color: hsl(13, 31%, 94%);

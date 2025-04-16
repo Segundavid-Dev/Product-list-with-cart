@@ -4,7 +4,7 @@ import Product from "./components/Product";
 function App() {
   return (
     <div className="container mx-auto p-10">
-      <div className="flex justify-center">
+      <div className="flex justify-between">
         <Product />
         <Cart />
       </div>
