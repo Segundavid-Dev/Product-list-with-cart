@@ -2,8 +2,8 @@ import Button from "./button";
 export default function Card({ item }) {
   console.log(item);
   return (
-    <div className="relative">
-      <div>
+    <div>
+      <div className="relative">
         <div className="w-[200px] h-[200px] overflow-hidden cursor-pointer rounded-3xl">
           <img
             src={item?.image?.desktop}
@@ -11,6 +11,7 @@ export default function Card({ item }) {
             className="rounded-3xl w-full h-full object-cover transition duration-300 hover:scale-120"
           />
         </div>
+        <Button />
 
         <small className="text-[var(--product-category-color)] font-semibold">
           {item.category}
