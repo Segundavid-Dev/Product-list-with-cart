@@ -1,6 +1,6 @@
 import Button from "./button";
+
 export default function Card({ item }) {
-  console.log(item);
   return (
     <div>
       <div className="relative">
@@ -13,13 +13,15 @@ export default function Card({ item }) {
         </div>
         <Button />
 
-        <small className="text-[var(--product-category-color)] font-semibold">
-          {item.category}
-        </small>
-        <p className="font-bold">{item?.name}</p>
-        <small className="text-[var(--cart-red)] font-bold">
-          ${item?.price}
-        </small>
+        <div className="pt-10">
+          <small className="text-[var(--product-category-color)] font-semibold">
+            {item.category}
+          </small>
+          <p className="font-bold">{item?.name}</p>
+          <small className="text-[var(--cart-red)] font-bold">
+            ${item?.price}
+          </small>
+        </div>
       </div>
     </div>
   );
