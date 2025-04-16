@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.prettierignore
+
+# Avoid accidental upload of the Sketch and Figma design files
+*.sketch
+*.fig
+
+*.xd
