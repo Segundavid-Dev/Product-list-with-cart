@@ -1,5 +1,5 @@
 /* import statements */
-@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Urbanist&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -11,7 +11,7 @@
 }
 
 body {
-  font-family: "Red Hat Text", sans-serif;
+  font-family: "Urbanist", sans-serif;
   background-color: hsl(13, 31%, 94%);
   line-height: 1.7;
 }
