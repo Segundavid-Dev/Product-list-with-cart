@@ -16,7 +16,7 @@ export default function Product() {
   return (
     <div>
       <h1 className="text-4xl font-extrabold">Desserts</h1>
-      <ul>
+      <ul className="grid grid-cols-3 gap-y-[2rem] gap-x-[3rem] mt-10">
         {data.map((item) => (
           <li key={item.name}>
             <Card item={item} />
