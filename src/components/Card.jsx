@@ -1,3 +1,4 @@
+import Button from "./button";
 export default function Card({ item }) {
   console.log(item);
   return (
@@ -16,6 +17,7 @@ export default function Card({ item }) {
           ${item?.price}
         </small>
       </div>
+      <Button />
     </div>
   );
 }
