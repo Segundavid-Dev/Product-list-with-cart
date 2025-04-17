@@ -33,23 +33,30 @@ export default function Cart() {
             </p>
           </div>
         ) : (
-          <CartItems addCartDummyData={addCartDummyData} />
+          <CartItems
+            addCartDummyData={addCartDummyData}
+            data={data}
+            setData={setData}
+          />
         )}
       </div>
     </div>
   );
 }
 
-function CartItems({ addCartDummyData }) {
+function CartItems({ addCartDummyData, data, setData }) {
+  function handleFilter() {
+    // filtering mechanism to remove from cart
+    const filtered = data.filter((item) => item.quantity > 1);
+    setData(filtered);
+    console.log(data);
+  }
   return (
     <>
       <ul className="w-[20vw]">
-        {addCartDummyData.map((item) => (
-          <div>
-            <li
-              key={item?.name}
-              className="border-b-1 flex items-center justify-between border-[var(--product-category-color)] py-3"
-            >
+        {data.map((item) => (
+          <div key={item.name}>
+            <li className="border-b-1 flex items-center justify-between border-[var(--product-category-color)] py-3">
               <div>
                 <p className="font-bold text-[#444]">{item?.name}</p>
                 <div className="flex gap-3 text-[13px]">
@@ -65,6 +72,7 @@ function CartItems({ addCartDummyData }) {
                 <img
                   src="/images/icon-remove-item.svg"
                   alt="Remove cart image"
+                  onClick={handleFilter}
                 />
               </div>
             </li>
@@ -89,7 +97,7 @@ function CartItems({ addCartDummyData }) {
             This is a <span className="font-bold">carbon-neutral </span>delivery
           </p>
         </div>
-        <button className="bg-[var(--cart-red)] text-white w-full rounded-full py-3">
+        <button className="bg-[var(--cart-red)] text-white w-full rounded-full py-3 cursor-pointer">
           Confirm Order
         </button>
       </div>
