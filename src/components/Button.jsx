@@ -23,7 +23,7 @@ export default function Button() {
               <img src="/images/icon-decrement-quantity.svg" alt="" />
             </div>
             <small className="font-bold">1</small>
-            <div className="border border-white p-1 rounded-full">
+            <div className="border border-white p-1 rounded-full ">
               <img
                 src="/images/icon-increment-quantity.svg"
                 alt="increment-cart-icon"
