@@ -1,7 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 
-// create instanciation of
+// create custom hook
+
 export const CounterContext = createContext(null);
-export default function CounterProvider() {
-  return <div></div>;
-}
