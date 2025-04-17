@@ -1,17 +1,20 @@
 import Cart from "./components/Cart";
 import Product from "./components/Product";
 import CounterProvider from "./context/CounterProvider";
+import ActiveProvider from "./context/ActiveProvider";
 
 function App() {
   return (
-    <CounterProvider>
-      <div className="container mx-auto p-10">
-        <div className="flex justify-between">
-          <Product />
-          <Cart />
+    <ActiveProvider>
+      <CounterProvider>
+        <div className="container mx-auto p-10">
+          <div className="flex justify-between">
+            <Product />
+            <Cart />
+          </div>
         </div>
-      </div>
-    </CounterProvider>
+      </CounterProvider>
+    </ActiveProvider>
   );
 }
 

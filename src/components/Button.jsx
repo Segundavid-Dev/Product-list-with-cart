@@ -1,13 +1,16 @@
 import { useState, useContext } from "react";
 import { CounterContext } from "../context/CounterContext";
+import { ActiveContext } from "../context/ActiveContext";
 
 export default function Button() {
   const [isClick, setIsClick] = useState(false);
   const { count, setCount } = useContext(CounterContext);
+  const { isActive, setIsActive } = useContext(ActiveContext);
 
   // Desktop hover functionality
   function handleClick() {
     setIsClick(!isClick);
+    setIsActive(!isActive);
   }
 
   function handleAddtoCart() {
