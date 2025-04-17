@@ -45,17 +45,15 @@ export default function Cart() {
 }
 
 function CartItems({ addCartDummyData, data, setData }) {
-  function handleFilter() {
-    // filtering mechanism to remove from cart
-    const filtered = data.filter((item) => item.quantity > 1);
+  function handleFilter(indexToRemove) {
+    const filtered = data.filter((item, index) => index !== indexToRemove);
     setData(filtered);
-    console.log(data);
   }
   return (
     <>
       <ul className="w-[20vw]">
-        {data.map((item) => (
-          <div key={item.name}>
+        {data.map((item, index) => (
+          <div key={index}>
             <li className="border-b-1 flex items-center justify-between border-[var(--product-category-color)] py-3">
               <div>
                 <p className="font-bold text-[#444]">{item?.name}</p>
@@ -72,7 +70,7 @@ function CartItems({ addCartDummyData, data, setData }) {
                 <img
                   src="/images/icon-remove-item.svg"
                   alt="Remove cart image"
-                  onClick={handleFilter}
+                  onClick={() => handleFilter(index)}
                 />
               </div>
             </li>
@@ -104,3 +102,8 @@ function CartItems({ addCartDummyData, data, setData }) {
     </>
   );
 }
+
+/* the filter out method works this way, when mapping over my function, i specify the item and the index
+ * I give my key as that index
+ * then in the onClick function onClick={}, i will pass in a callback function to only run after the components mounts and the element is actually clicked
+ */
