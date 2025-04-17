@@ -3,15 +3,11 @@ import { useState } from "react";
 export default function Button() {
   const [isHover, setIsHover] = useState(false);
 
-  function handleOnMouseEnter() {
+  function handleOnClick() {
     setIsHover(!isHover);
   }
-
-  function handleOnMouseLeave() {
-    setIsHover(false);
-  }
   return (
-    <div onMouseEnter={handleOnMouseEnter} onMouseLeave={handleOnMouseLeave}>
+    <div onClick={handleOnClick} className="select-none">
       <div
         className={`rounded-full p-3  border border-[var(--product-category-color)] w-40 absolute bottom-25 right-6 cursor-pointer ${
           isHover ? "bg-[var(--cart-red)] text-white border-none" : "bg-white"

@@ -1,5 +1,7 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
-export default function CounterContext() {
+// create instanciation of
+export const CounterContext = createContext(null);
+export default function CounterProvider() {
   return <div></div>;
 }
