@@ -19,7 +19,7 @@ const addCartDummyData = [
 ];
 
 export default function Cart() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const [data, setData] = useState(addCartDummyData);
   return (
     <div>
@@ -106,4 +106,6 @@ function CartItems({ addCartDummyData, data, setData }) {
 /* the filter out method works this way, when mapping over my function, i specify the item and the index
  * I give my key as that index
  * then in the onClick function onClick={}, i will pass in a callback function to only run after the components mounts and the element is actually clicked
+ *
+ * when and how do i send the status true and false to my cart section
  */

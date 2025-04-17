@@ -6,21 +6,8 @@ export default function Button() {
   const { count, setCount } = useContext(CounterContext);
 
   // Desktop hover functionality
-  function handleOnMouseEnter() {
+  function handleClick() {
     setIsHover(!isHover);
-  }
-
-  function handleOnMouseLeave() {
-    setIsHover(false);
-  }
-
-  // Mobile click functionality
-  function handleOnTouchStart() {
-    setIsHover(true);
-  }
-
-  function handleOnTouchEnd() {
-    setIsHover(false);
   }
 
   function handleAddtoCart() {
@@ -36,13 +23,7 @@ export default function Button() {
   }
 
   return (
-    <div
-      onMouseEnter={handleOnMouseEnter}
-      onMouseLeave={handleOnMouseLeave}
-      onTouchEnd={handleOnTouchEnd}
-      onTouchStart={handleOnTouchStart}
-      className="select-none"
-    >
+    <div onClick={handleClick} className="select-none">
       <div
         className={`rounded-full p-3  border border-[var(--product-category-color)] w-40 absolute bottom-25 right-6 cursor-pointer ${
           isHover ? "bg-[var(--cart-red)] text-white border-none" : "bg-white"
