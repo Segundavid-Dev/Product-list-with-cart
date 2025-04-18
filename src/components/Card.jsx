@@ -1,20 +1,22 @@
+import { useState } from "react";
 import Button from "./button";
-import { useContext } from "react";
-import { ActiveContext } from "../context/ActiveContext";
+import Image from "./Image";
 
 export default function Card({ item }) {
-  const { isActive, setIsActive } = useContext(ActiveContext);
+  const [isBorderActive, setIsBorderActive] = useState(false);
+
+  function showBorder() {
+    setIsBorderActive(!isBorderActive);
+  }
   return (
     <div>
       <div className="relative">
-        <div className="w-[200px] h-[200px] overflow-hidden cursor-pointer rounded-3xl">
-          <img
-            src={item?.image?.desktop}
-            alt="Product Image"
-            className={`rounded-3xl w-full h-full object-cover transition duration-300 hover:scale-120`}
-          />
-        </div>
-        <Button />
+        <Image item={item} isBorderActive={isBorderActive} />
+        <Button
+          showBorder={showBorder}
+          isBorderActive={isBorderActive}
+          setIsBorderActive={setIsBorderActive}
+        />
 
         <div className="pt-10">
           <small className="text-[var(--product-category-color)] font-semibold">

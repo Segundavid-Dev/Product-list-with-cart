@@ -2,7 +2,11 @@ import { useState, useContext } from "react";
 import { CounterContext } from "../context/CounterContext";
 import { ActiveContext } from "../context/ActiveContext";
 
-export default function Button() {
+export default function Button({
+  showBorder,
+  isBorderActive,
+  setIsBorderActive,
+}) {
   const [isClick, setIsClick] = useState(false);
   const { count, setCount } = useContext(CounterContext);
   const { isActive, setIsActive } = useContext(ActiveContext);
@@ -11,6 +15,9 @@ export default function Button() {
   function handleClick() {
     setIsClick(!isClick);
     setIsActive(!isActive);
+    // logic for image border show
+    setIsBorderActive(!isBorderActive);
+    console.log(isBorderActive);
   }
 
   function handleAddtoCart() {
@@ -26,7 +33,13 @@ export default function Button() {
   }
 
   return (
-    <div onClick={handleClick} className="select-none">
+    <div
+      onClick={() => {
+        handleClick();
+        showBorder();
+      }}
+      className="select-none"
+    >
       <div
         className={`rounded-full p-3  border border-[var(--product-category-color)] w-40 absolute bottom-25 right-6 cursor-pointer ${
           isClick ? "bg-[var(--cart-red)] text-white border-none" : "bg-white"
