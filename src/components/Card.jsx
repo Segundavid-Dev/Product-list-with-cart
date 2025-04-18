@@ -1,6 +1,9 @@
 import Button from "./button";
+import { useContext } from "react";
+import { ActiveContext } from "../context/ActiveContext";
 
 export default function Card({ item }) {
+  const { isActive, setIsActive } = useContext(ActiveContext);
   return (
     <div>
       <div className="relative">
@@ -8,7 +11,7 @@ export default function Card({ item }) {
           <img
             src={item?.image?.desktop}
             alt="Product Image"
-            className="rounded-3xl w-full h-full object-cover transition duration-300 hover:scale-120"
+            className={`rounded-3xl w-full h-full object-cover transition duration-300 hover:scale-120`}
           />
         </div>
         <Button />
