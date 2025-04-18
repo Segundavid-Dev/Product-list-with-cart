@@ -2,7 +2,7 @@ export default function Image({ item, isBorderActive }) {
   return (
     <div
       className={`${
-        isBorderActive && "border"
+        isBorderActive && "border-[var(--cart-red)] border-2"
       } w-[200px] h-[200px] overflow-hidden cursor-pointer rounded-3xl`}
     >
       <img
