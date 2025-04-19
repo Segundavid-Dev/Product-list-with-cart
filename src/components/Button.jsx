@@ -15,9 +15,6 @@ export default function Button({
   function handleClick() {
     setIsClick(true);
     setIsActive(true);
-    // logic for image border show
-    setIsBorderActive(!isBorderActive);
-    console.log(isBorderActive);
   }
 
   function handleAddtoCart() {

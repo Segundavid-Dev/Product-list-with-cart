@@ -6,7 +6,7 @@ export default function Card({ item }) {
   const [isBorderActive, setIsBorderActive] = useState(false);
 
   function showBorder() {
-    setIsBorderActive(!isBorderActive);
+    setIsBorderActive(true);
   }
   return (
     <div>
