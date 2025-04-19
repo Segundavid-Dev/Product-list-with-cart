@@ -1,14 +1,9 @@
 import { useState, useContext } from "react";
-import { CounterContext } from "../context/CounterContext";
 import { ActiveContext } from "../context/ActiveContext";
 
-export default function Button({
-  showBorder,
-  isBorderActive,
-  setIsBorderActive,
-}) {
+export default function Button({ showBorder }) {
   const [isClick, setIsClick] = useState(false);
-  const { count, setCount } = useContext(CounterContext);
+  const [value, setValue] = useState(1);
   const { isActive, setIsActive } = useContext(ActiveContext);
 
   // Desktop hover functionality
@@ -17,16 +12,12 @@ export default function Button({
     setIsActive(true);
   }
 
-  function handleAddtoCart() {
-    const newValue = count + 1;
-    setCount(newValue);
-    console.log(newValue);
+  function handleRemoveFromCart() {
+    console.log("Removed from cart");
   }
 
-  function handleRemoveFromCart() {
-    const newValue = count - 1;
-    setCount(newValue);
-    console.log(newValue);
+  function handleAddtoCart() {
+    console.log("Added to cart");
   }
 
   return (
@@ -44,19 +35,20 @@ export default function Button({
       >
         {isClick ? (
           <div className="flex items-center justify-around cursor-pointer">
-            <div className="border border-white py-2 px-1 rounded-full">
-              <img
-                src="/images/icon-decrement-quantity.svg"
-                alt=""
-                onClick={handleRemoveFromCart}
-              />
+            <div
+              className="border border-white py-2 px-1 rounded-full"
+              onClick={handleRemoveFromCart}
+            >
+              <img src="/images/icon-decrement-quantity.svg" alt="" />
             </div>
-            <small className="font-bold">1</small>
-            <div className="border border-white p-1 rounded-full ">
+            <small className="font-bold">{value}</small>
+            <div
+              className="border border-white p-1 rounded-full "
+              onClick={handleAddtoCart}
+            >
               <img
                 src="/images/icon-increment-quantity.svg"
                 alt="increment-cart-icon"
-                onClick={handleAddtoCart}
               />
             </div>
           </div>
