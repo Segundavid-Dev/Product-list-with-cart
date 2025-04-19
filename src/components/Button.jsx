@@ -13,8 +13,8 @@ export default function Button({
 
   // Desktop hover functionality
   function handleClick() {
-    setIsClick(!isClick);
-    setIsActive(!isActive);
+    setIsClick(true);
+    setIsActive(true);
     // logic for image border show
     setIsBorderActive(!isBorderActive);
     console.log(isBorderActive);
