@@ -22,6 +22,7 @@ const addCartDummyData = [
 export default function Cart() {
   const { isActive, setIsActive } = useContext(ActiveContext);
   const [data, setData] = useState(addCartDummyData);
+
   return (
     <div>
       <div className="bg-white rounded-2xl px-10 py-5">
@@ -105,11 +106,3 @@ function CartItems({ addCartDummyData, data, setData }) {
     </>
   );
 }
-
-/*
-TODO -> I NEED TO PASS THE STATE OF BEEN CLCKED ON BUTTON TO MY CART SO WHEN * BUTTON IS CLICKED -> clicked "OR"
-        *  ISACTIVE STATE IS TRUE -> the cart should remain
-       the cart should only remove when both
-
-* I need to implement something like if i click the button, and click on the increment and decrement, the state should still remain(hard--force)
- */
