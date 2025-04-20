@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { ActiveContext } from "../context/ActiveContext";
 
-export default function Cart({ cartItems }) {
+export default function Cart({ cartItems, RemoveFromCart }) {
   const { isActive, setIsActive } = useContext(ActiveContext);
 
   return (
@@ -22,23 +22,19 @@ export default function Cart({ cartItems }) {
             </p>
           </div>
         ) : (
-          <CartItems cartItems={cartItems} />
+          <CartItems cartItems={cartItems} RemoveFromCart={RemoveFromCart} />
         )}
       </div>
     </div>
   );
 }
 
-function CartItems({ cartItems }) {
-  // function handleFilter(indexToRemove) {
-  //   const filtered = cartItems.filter((item, index) => index !== indexToRemove);
-  //   setData(filtered);
-  // }
+function CartItems({ cartItems, RemoveFromCart }) {
   return (
     <>
       <ul className="w-[20vw]">
-        {cartItems.map((item, index) => (
-          <div key={index}>
+        {cartItems.map((item, indexToRemove) => (
+          <div key={indexToRemove}>
             <li className="border-b-1 flex items-center justify-between border-[var(--product-category-color)] py-3">
               <div>
                 <p className="font-bold text-[#444]">{item?.name}</p>
@@ -55,6 +51,7 @@ function CartItems({ cartItems }) {
                 <img
                   src="/images/icon-remove-item.svg"
                   alt="Remove cart image"
+                  onClick={() => RemoveFromCart(item, indexToRemove)}
                 />
               </div>
             </li>

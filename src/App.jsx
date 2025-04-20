@@ -14,18 +14,21 @@ function App() {
     setCartItem((cartItems) => [...cartItems, { ...item }]);
   }
 
-  // function RemoveFromCart(item, index) {
-  //   // const filtered = cartItems.filter((item, index) => index !== indexToRemove);
-  //   setCartItem(filtered);
-  // }
+  function RemoveFromCart(item, indexToRemove) {
+    const filtered = cartItems.filter((item, index) => index !== indexToRemove);
+    setCartItem(filtered);
+  }
 
   return (
     <ActiveProvider>
       <CounterProvider>
         <div className="container mx-auto p-10">
           <div className="flex justify-between">
-            <Product handleAddtoCart={handleAddtoCart} />
-            <Cart cartItems={cartItems} />
+            <Product
+              handleAddtoCart={handleAddtoCart}
+              RemoveFromCart={RemoveFromCart}
+            />
+            <Cart cartItems={cartItems} RemoveFromCart={RemoveFromCart} />
           </div>
         </div>
       </CounterProvider>
@@ -34,11 +37,3 @@ function App() {
 }
 
 export default App;
-
-/*
- 2 main components
-  * Cart components
-  * Product components
-    * Cards components
-      *card components   
-*/
