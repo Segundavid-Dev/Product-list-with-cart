@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { ActiveContext } from "../context/ActiveContext";
 
-export default function Button({ showBorder, showCartInfo }) {
+export default function Button({ showBorder, handleAddtoCart, index, item }) {
   const [isClick, setIsClick] = useState(false);
   const [value, setValue] = useState(1);
   const { isActive, setIsActive } = useContext(ActiveContext);
@@ -26,7 +26,7 @@ export default function Button({ showBorder, showCartInfo }) {
       onClick={() => {
         handleClick();
         showBorder();
-        showCartInfo();
+        handleAddtoCart(item, index);
       }}
       className="select-none"
     >

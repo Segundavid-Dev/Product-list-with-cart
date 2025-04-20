@@ -1,33 +1,18 @@
 import { useState, useContext } from "react";
 import { ActiveContext } from "../context/ActiveContext";
 
-const addCartDummyData = [
-  {
-    name: "Classic TIramisu",
-    quantity: 1,
-    price: 5.5,
-  },
-  {
-    name: "Vanilla Bean Creme Brulee",
-    quantity: 4,
-    price: 7.0,
-  },
-  {
-    name: "Vanilla Panna Cotta",
-    quantity: 2,
-    price: 6.5,
-  },
-];
-
-export default function Cart() {
+export default function Cart({ cartItems }) {
   const { isActive, setIsActive } = useContext(ActiveContext);
-  const [data, setData] = useState(addCartDummyData);
 
   return (
     <div>
       <div className="bg-white rounded-2xl px-10 py-5">
         <h2 className="text-[var(--cart-red)] font-bold">
-          {isActive ? <p>Your Cart ({data.length})</p> : <p>Your Cart (0)</p>}
+          {isActive ? (
+            <p>Your Cart ({cartItems.length})</p>
+          ) : (
+            <p>Your Cart (0)</p>
+          )}
         </h2>
         {!isActive ? (
           <div className="flex flex-col items-center justify-center text-center p-5">
@@ -37,26 +22,22 @@ export default function Cart() {
             </p>
           </div>
         ) : (
-          <CartItems
-            addCartDummyData={addCartDummyData}
-            data={data}
-            setData={setData}
-          />
+          <CartItems cartItems={cartItems} />
         )}
       </div>
     </div>
   );
 }
 
-function CartItems({ addCartDummyData, data, setData }) {
-  function handleFilter(indexToRemove) {
-    const filtered = data.filter((item, index) => index !== indexToRemove);
-    setData(filtered);
-  }
+function CartItems({ cartItems }) {
+  // function handleFilter(indexToRemove) {
+  //   const filtered = cartItems.filter((item, index) => index !== indexToRemove);
+  //   setData(filtered);
+  // }
   return (
     <>
       <ul className="w-[20vw]">
-        {data.map((item, index) => (
+        {cartItems.map((item, index) => (
           <div key={index}>
             <li className="border-b-1 flex items-center justify-between border-[var(--product-category-color)] py-3">
               <div>
@@ -74,7 +55,6 @@ function CartItems({ addCartDummyData, data, setData }) {
                 <img
                   src="/images/icon-remove-item.svg"
                   alt="Remove cart image"
-                  onClick={() => handleFilter(index)}
                 />
               </div>
             </li>

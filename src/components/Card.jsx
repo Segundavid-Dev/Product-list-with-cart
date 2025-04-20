@@ -2,16 +2,13 @@ import { useState } from "react";
 import Button from "./button";
 import Image from "./Image";
 
-export default function Card({ item, index }) {
+export default function Card({ item, index, handleAddtoCart }) {
   const [isBorderActive, setIsBorderActive] = useState(false);
 
   function showBorder() {
     setIsBorderActive(true);
   }
 
-  function showCartInfo() {
-    console.log(index);
-  }
   return (
     <div>
       <div className="relative">
@@ -20,7 +17,9 @@ export default function Card({ item, index }) {
           showBorder={showBorder}
           isBorderActive={isBorderActive}
           setIsBorderActive={setIsBorderActive}
-          showCartInfo={showCartInfo}
+          item={item}
+          handleAddtoCart={handleAddtoCart}
+          index={index}
         />
 
         <div className="pt-10">
