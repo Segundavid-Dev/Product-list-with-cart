@@ -47,11 +47,13 @@ function CartItems({ cartItems, RemoveFromCart }) {
                   </span>
                 </div>
               </div>
-              <div className="border cursor-pointer border-[var(--product-category-color)] p-1 rounded-full">
+              <div
+                className="border cursor-pointer border-[var(--product-category-color)] p-1 rounded-full"
+                onClick={() => RemoveFromCart(item, indexToRemove)}
+              >
                 <img
                   src="/images/icon-remove-item.svg"
                   alt="Remove cart image"
-                  onClick={() => RemoveFromCart(item, indexToRemove)}
                 />
               </div>
             </li>

@@ -10,8 +10,12 @@ function App() {
   // Lift state up to a common parent component
   const [cartItems, setCartItem] = useState(addCartDummyData);
 
-  function handleAddtoCart(item) {
-    setCartItem((cartItems) => [...cartItems, { ...item }]);
+  function handleAddtoCart(item, index) {
+    setCartItem((cartItems) => {
+      const exists = cartItems.some((cartItem) => cartItem.index === index);
+      if (exists) return cartItems;
+      return [...cartItems, { ...item, index }];
+    });
   }
 
   function RemoveFromCart(item, indexToRemove) {
@@ -35,5 +39,9 @@ function App() {
     </ActiveProvider>
   );
 }
+
+/*
+if(index)
+*/
 
 export default App;

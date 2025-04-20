@@ -26,7 +26,7 @@ export default function Button({ showBorder, handleAddtoCart, index, item }) {
       onClick={() => {
         handleClick();
         showBorder();
-        handleAddtoCart(item);
+        handleAddtoCart(item, index);
       }}
       className="select-none cursor-pointer"
     >
