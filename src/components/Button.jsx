@@ -13,11 +13,12 @@ export default function Button({ showBorder }) {
   }
 
   function handleRemoveFromCart() {
-    console.log("Removed from cart");
+    if (value === 1) return; // early return
+    setValue(value - 1);
   }
 
   function handleAddtoCart() {
-    console.log("Added to cart");
+    setValue(value + 1);
   }
 
   return (
@@ -29,7 +30,7 @@ export default function Button({ showBorder }) {
       className="select-none"
     >
       <div
-        className={`rounded-full p-3  border border-[var(--product-category-color)] w-40 absolute bottom-25 right-6 cursor-pointer ${
+        className={`rounded-full p-3  border border-[var(--product-category-color)] hover:border-[var(--cart-red)] w-40 absolute bottom-25 right-6 ${
           isClick ? "bg-[var(--cart-red)] text-white border-none" : "bg-white"
         } `}
       >

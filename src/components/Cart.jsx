@@ -25,7 +25,9 @@ export default function Cart() {
   return (
     <div>
       <div className="bg-white rounded-2xl px-10 py-5">
-        <h2 className="text-[var(--cart-red)] font-bold">Your Cart(0)</h2>
+        <h2 className="text-[var(--cart-red)] font-bold">
+          {isActive ? <p>Your Cart ({data.length})</p> : <p>Your Cart (0)</p>}
+        </h2>
         {!isActive ? (
           <div className="flex flex-col items-center justify-center text-center p-5">
             <img src="/images/illustration-empty-cart.svg" alt="empty cart" />
