@@ -4,28 +4,7 @@ import CounterProvider from "./context/CounterProvider";
 import ActiveProvider from "./context/ActiveProvider";
 import { useState } from "react";
 
-const addCartDummyData = [
-  {
-    name: "Classic TIramisu",
-    quantity: 1,
-    price: 5.5,
-  },
-  {
-    name: "Vanilla Bean Creme Brulee",
-    quantity: 4,
-    price: 7.0,
-  },
-  {
-    name: "Vanilla Panna Cotta",
-    quantity: 2,
-    price: 6.5,
-  },
-  {
-    name: "Poundo and Egusi",
-    quantity: 10,
-    price: 3,
-  },
-];
+const addCartDummyData = [];
 
 function App() {
   // Lift state up to a common parent component

@@ -12,12 +12,12 @@ export default function Button({ showBorder, handleAddtoCart, index, item }) {
     setIsActive(true);
   }
 
-  function handleRemoveFromCart() {
+  function DecrementCartValue() {
     if (value === 1) return; // early return
     setValue(value - 1);
   }
 
-  function handleAddtoCart() {
+  function IncrementCartValue() {
     setValue(value + 1);
   }
 
@@ -26,9 +26,9 @@ export default function Button({ showBorder, handleAddtoCart, index, item }) {
       onClick={() => {
         handleClick();
         showBorder();
-        handleAddtoCart(item, index);
+        handleAddtoCart(item);
       }}
-      className="select-none"
+      className="select-none cursor-pointer"
     >
       <div
         className={`rounded-full p-3  border border-[var(--product-category-color)] hover:border-[var(--cart-red)] w-40 absolute bottom-25 right-6 ${
@@ -39,14 +39,14 @@ export default function Button({ showBorder, handleAddtoCart, index, item }) {
           <div className="flex items-center justify-around cursor-pointer">
             <div
               className="border border-white py-2 px-1 rounded-full"
-              onClick={handleRemoveFromCart}
+              onClick={DecrementCartValue}
             >
               <img src="/images/icon-decrement-quantity.svg" alt="" />
             </div>
             <small className="font-bold">{value}</small>
             <div
               className="border border-white p-1 rounded-full "
-              onClick={handleAddtoCart}
+              onClick={IncrementCartValue}
             >
               <img
                 src="/images/icon-increment-quantity.svg"
