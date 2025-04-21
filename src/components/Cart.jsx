@@ -1,7 +1,13 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { ActiveContext } from "../context/ActiveContext";
 
-export default function Cart({ cartItems, RemoveFromCart, quantities }) {
+export default function Cart({
+  cartItems,
+  RemoveFromCart,
+  quantities,
+  total,
+  setTotal,
+}) {
   const { isActive, setIsActive } = useContext(ActiveContext);
 
   return (
@@ -26,6 +32,8 @@ export default function Cart({ cartItems, RemoveFromCart, quantities }) {
             cartItems={cartItems}
             RemoveFromCart={RemoveFromCart}
             quantities={quantities}
+            total={total}
+            setTotal={setTotal}
           />
         )}
       </div>
@@ -33,15 +41,20 @@ export default function Cart({ cartItems, RemoveFromCart, quantities }) {
   );
 }
 
-function CartItems({ cartItems, RemoveFromCart, quantities }) {
-  console.log(quantities);
+function CartItems({ cartItems, RemoveFromCart, quantities, total, setTotal }) {
+  useEffect(() => {
+    const newTotal = cartItems.reduce((acc, item) => {
+      const quantity = quantities[item.index] || 1;
+      return acc + item.price * quantity;
+    }, 0);
+    setTotal(newTotal);
+  }, [cartItems, quantities, setTotal]);
   return (
     <>
       <ul className="w-[20vw]">
         {cartItems.map((item, indexToRemove) => {
-          console.log(item.index);
           const quantity = quantities[item.index] || 1;
-          console.log(quantity);
+          const calculatedPrice = quantity * item?.price;
           return (
             <div key={indexToRemove}>
               <li className="border-b-1 flex items-center justify-between border-[var(--product-category-color)] py-3">
@@ -54,8 +67,8 @@ function CartItems({ cartItems, RemoveFromCart, quantities }) {
                     <span className="text-[var(--product-category-color)]">
                       @${item?.price}
                     </span>
-                    <span className="text-[var(--product-category-color)]">
-                      @${quantity * item?.price}
+                    <span className="text-[var(--dark-red)]">
+                      ${calculatedPrice}
                     </span>
                   </div>
                 </div>
@@ -78,7 +91,7 @@ function CartItems({ cartItems, RemoveFromCart, quantities }) {
           <span className="text-[var(--product-category-color)]">
             Order Total
           </span>
-          <span className="font-bold text-2xl">$46.50</span>
+          <span className="font-bold text-2xl">{total}</span>
         </div>
         <div className="text-sm flex gap-2 items-center justify-center bg-gray-100 p-4 rounded-lg">
           <div>

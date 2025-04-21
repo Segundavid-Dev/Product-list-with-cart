@@ -9,8 +9,8 @@ const addCartDummyData = [];
 function App() {
   // Lift state up to a common parent component
   const [cartItems, setCartItem] = useState(addCartDummyData);
-
   const [quantities, setQuantities] = useState({});
+  const [total, setTotal] = useState(0);
 
   function handleQuantityChange(id, quantity) {
     setQuantities((prev) => ({
@@ -42,11 +42,15 @@ function App() {
             <Product
               handleAddtoCart={handleAddtoCart}
               handleQuantityChange={handleQuantityChange}
+              total={total}
+              setTotal={setTotal}
             />
             <Cart
               cartItems={cartItems}
               RemoveFromCart={RemoveFromCart}
               quantities={quantities}
+              total={total}
+              setTotal={setTotal}
             />
           </div>
         </div>

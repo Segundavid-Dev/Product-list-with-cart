@@ -7,6 +7,8 @@ export default function Card({
   index,
   handleAddtoCart,
   handleQuantityChange,
+  total,
+  setTotal,
 }) {
   const [isBorderActive, setIsBorderActive] = useState(false);
 
@@ -26,6 +28,8 @@ export default function Card({
           handleAddtoCart={handleAddtoCart}
           index={index}
           handleQuantityChange={handleQuantityChange}
+          total={total}
+          setTotal={setTotal}
         />
 
         <div className="pt-10">

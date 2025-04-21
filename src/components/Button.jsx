@@ -7,6 +7,8 @@ export default function Button({
   index,
   item,
   handleQuantityChange,
+  total,
+  setTotal,
 }) {
   const [isClick, setIsClick] = useState(false);
   const { isActive, setIsActive } = useContext(ActiveContext);
@@ -19,6 +21,7 @@ export default function Button({
     setValue(newValue);
     handleQuantityChange(index, newValue);
     console.log(index, newValue);
+    console.log(total);
   }
 
   function IncrementCartValue() {
@@ -26,6 +29,7 @@ export default function Button({
     setValue(newValue);
     handleQuantityChange(index, newValue);
     console.log(index, value);
+    console.log(total);
   }
 
   // Desktop hover functionality

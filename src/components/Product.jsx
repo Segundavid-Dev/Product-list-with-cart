@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
 
-export default function Product({ handleAddtoCart, handleQuantityChange }) {
+export default function Product({
+  handleAddtoCart,
+  handleQuantityChange,
+  total,
+  setTotal,
+}) {
   // create a state array to hold all fetch values
   const [data, setData] = useState([]);
   useEffect(function () {
@@ -24,6 +29,8 @@ export default function Product({ handleAddtoCart, handleQuantityChange }) {
               index={index}
               handleAddtoCart={handleAddtoCart}
               handleQuantityChange={handleQuantityChange}
+              total={total}
+              setTotal={setTotal}
             />
           </li>
         ))}
