@@ -22,6 +22,8 @@ export default function Cart({
         </h2>
         {!isActive ? (
           <EmptyCart />
+        ) : cartItems.length === 0 ? (
+          <EmptyCart />
         ) : (
           <CartItems
             cartItems={cartItems}
