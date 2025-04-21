@@ -38,7 +38,7 @@ function App() {
     <ActiveProvider>
       <CounterProvider>
         <div className="container mx-auto p-10">
-          <div className="flex justify-between">
+          <div className="flex justify-between max-sm:flex-col">
             <Product
               handleAddtoCart={handleAddtoCart}
               handleQuantityChange={handleQuantityChange}
