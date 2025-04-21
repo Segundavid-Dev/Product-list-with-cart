@@ -39,6 +39,7 @@ function CartItems({ cartItems, RemoveFromCart, quantities }) {
     <>
       <ul className="w-[20vw]">
         {cartItems.map((item, indexToRemove) => {
+          console.log(item.index);
           const quantity = quantities[item.index] || 1;
           console.log(quantity);
           return (
@@ -52,6 +53,9 @@ function CartItems({ cartItems, RemoveFromCart, quantities }) {
                     </span>
                     <span className="text-[var(--product-category-color)]">
                       @${item?.price}
+                    </span>
+                    <span className="text-[var(--product-category-color)]">
+                      @${quantity * item?.price}
                     </span>
                   </div>
                 </div>
