@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
 
-export default function Product({ handleAddtoCart }) {
+export default function Product({ handleAddtoCart, handleQuantityChange }) {
   // create a state array to hold all fetch values
   const [data, setData] = useState([]);
   useEffect(function () {
@@ -19,7 +19,12 @@ export default function Product({ handleAddtoCart }) {
       <ul className="grid grid-cols-3 gap-y-[2rem] gap-x-[3rem] mt-10">
         {data.map((item, index) => (
           <li key={index}>
-            <Card item={item} index={index} handleAddtoCart={handleAddtoCart} />
+            <Card
+              item={item}
+              index={index}
+              handleAddtoCart={handleAddtoCart}
+              handleQuantityChange={handleQuantityChange}
+            />
           </li>
         ))}
       </ul>

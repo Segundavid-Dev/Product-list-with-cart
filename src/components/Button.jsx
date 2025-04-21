@@ -1,24 +1,37 @@
 import { useState, useContext } from "react";
 import { ActiveContext } from "../context/ActiveContext";
 
-export default function Button({ showBorder, handleAddtoCart, index, item }) {
+export default function Button({
+  showBorder,
+  handleAddtoCart,
+  index,
+  item,
+  handleQuantityChange,
+}) {
   const [isClick, setIsClick] = useState(false);
-  const [value, setValue] = useState(1);
   const { isActive, setIsActive } = useContext(ActiveContext);
+
+  const [value, setValue] = useState(1);
+
+  function DecrementCartValue() {
+    if (value === 1) return; // early return
+    const newValue = value - 1;
+    setValue(newValue);
+    handleQuantityChange(index, newValue);
+    console.log(index, newValue);
+  }
+
+  function IncrementCartValue() {
+    const newValue = value + 1;
+    setValue(newValue);
+    handleQuantityChange(index, newValue);
+    console.log(index, value);
+  }
 
   // Desktop hover functionality
   function handleClick() {
     setIsClick(true);
     setIsActive(true);
-  }
-
-  function DecrementCartValue() {
-    if (value === 1) return; // early return
-    setValue(value - 1);
-  }
-
-  function IncrementCartValue() {
-    setValue(value + 1);
   }
 
   return (

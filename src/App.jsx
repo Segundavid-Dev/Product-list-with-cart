@@ -10,10 +10,21 @@ function App() {
   // Lift state up to a common parent component
   const [cartItems, setCartItem] = useState(addCartDummyData);
 
+  const [quantities, setQuantities] = useState({});
+
+  function handleQuantityChange(id, quantity) {
+    setQuantities((prev) => ({
+      // product1: 2, product2: 1
+      ...prev,
+      [id]: quantity,
+    }));
+  }
+
   function handleAddtoCart(item, index) {
     setCartItem((cartItems) => {
+      // method to handle duplicate cartItem
       const exists = cartItems.some((cartItem) => cartItem.index === index);
-      if (exists) return cartItems;
+      if (exists) return cartItems; //early return
       return [...cartItems, { ...item, index }];
     });
   }
@@ -30,9 +41,13 @@ function App() {
           <div className="flex justify-between">
             <Product
               handleAddtoCart={handleAddtoCart}
-              RemoveFromCart={RemoveFromCart}
+              handleQuantityChange={handleQuantityChange}
             />
-            <Cart cartItems={cartItems} RemoveFromCart={RemoveFromCart} />
+            <Cart
+              cartItems={cartItems}
+              RemoveFromCart={RemoveFromCart}
+              quantities={quantities}
+            />
           </div>
         </div>
       </CounterProvider>

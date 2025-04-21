@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { ActiveContext } from "../context/ActiveContext";
 
-export default function Cart({ cartItems, RemoveFromCart }) {
+export default function Cart({ cartItems, RemoveFromCart, quantities }) {
   const { isActive, setIsActive } = useContext(ActiveContext);
 
   return (
@@ -22,43 +22,52 @@ export default function Cart({ cartItems, RemoveFromCart }) {
             </p>
           </div>
         ) : (
-          <CartItems cartItems={cartItems} RemoveFromCart={RemoveFromCart} />
+          <CartItems
+            cartItems={cartItems}
+            RemoveFromCart={RemoveFromCart}
+            quantities={quantities}
+          />
         )}
       </div>
     </div>
   );
 }
 
-function CartItems({ cartItems, RemoveFromCart }) {
+function CartItems({ cartItems, RemoveFromCart, quantities }) {
+  console.log(quantities);
   return (
     <>
       <ul className="w-[20vw]">
-        {cartItems.map((item, indexToRemove) => (
-          <div key={indexToRemove}>
-            <li className="border-b-1 flex items-center justify-between border-[var(--product-category-color)] py-3">
-              <div>
-                <p className="font-bold text-[#444]">{item?.name}</p>
-                <div className="flex gap-3 text-[13px]">
-                  <span className="text-[var(--cart-red)] font-bold">
-                    {item?.quantity}x
-                  </span>
-                  <span className="text-[var(--product-category-color)]">
-                    @${item?.price}
-                  </span>
+        {cartItems.map((item, indexToRemove) => {
+          const quantity = quantities[item.index] || 1;
+          console.log(quantity);
+          return (
+            <div key={indexToRemove}>
+              <li className="border-b-1 flex items-center justify-between border-[var(--product-category-color)] py-3">
+                <div>
+                  <p className="font-bold text-[#444]">{item?.name}</p>
+                  <div className="flex gap-3 text-[13px]">
+                    <span className="text-[var(--cart-red)] font-bold">
+                      {quantity}
+                    </span>
+                    <span className="text-[var(--product-category-color)]">
+                      @${item?.price}
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <div
-                className="border cursor-pointer border-[var(--product-category-color)] p-1 rounded-full"
-                onClick={() => RemoveFromCart(item, indexToRemove)}
-              >
-                <img
-                  src="/images/icon-remove-item.svg"
-                  alt="Remove cart image"
-                />
-              </div>
-            </li>
-          </div>
-        ))}
+                <div
+                  className="border cursor-pointer border-[var(--product-category-color)] p-1 rounded-full"
+                  onClick={() => RemoveFromCart(item, indexToRemove)}
+                >
+                  <img
+                    src="/images/icon-remove-item.svg"
+                    alt="Remove cart image"
+                  />
+                </div>
+              </li>
+            </div>
+          );
+        })}
       </ul>
       <div className="flex flex-col gap-3">
         <div className="flex justify-between items-center mt-3">
