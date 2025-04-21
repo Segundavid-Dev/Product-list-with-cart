@@ -48,7 +48,7 @@ export default function Button({
       className="select-none cursor-pointer"
     >
       <div
-        className={`rounded-full p-3  border border-[var(--product-category-color)] hover:border-[var(--cart-red)] w-40 absolute bottom-25 right-6 max-sm:left-20 max-sm:bottom-10 ${
+        className={`rounded-full p-3  border border-[var(--product-category-color)] hover:border-[var(--cart-red)] w-40 absolute  left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${
           isClick ? "bg-[var(--cart-red)] text-white border-none" : "bg-white"
         } `}
       >

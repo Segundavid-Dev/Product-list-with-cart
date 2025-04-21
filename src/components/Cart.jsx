@@ -12,7 +12,7 @@ export default function Cart({
 
   return (
     <div>
-      <div className="bg-white rounded-2xl px-10 py-5">
+      <div className="bg-white rounded-2xl px-10 py-5 max-sm:w-full max-sm:mt-10 max-sm:px-7">
         <h2 className="text-[var(--cart-red)] font-bold">
           {isActive ? (
             <p>Your Cart ({cartItems.length})</p>
@@ -48,7 +48,7 @@ function CartItems({ cartItems, RemoveFromCart, quantities, total, setTotal }) {
   }, [cartItems, quantities, setTotal]);
   return (
     <>
-      <ul className="w-[20vw]">
+      <ul className="w-[20vw] max-sm:w-full">
         {cartItems.map((item, indexToRemove) => {
           const quantity = quantities[item.index] || 1;
           const calculatedPrice = quantity * item?.price;
@@ -56,7 +56,7 @@ function CartItems({ cartItems, RemoveFromCart, quantities, total, setTotal }) {
             <div key={indexToRemove}>
               <li className="border-b-1 flex items-center justify-between border-[var(--product-category-color)] py-3">
                 <div>
-                  <p className="font-bold text-[#444]">{item?.name}</p>
+                  <p className="text-[#444]">{item?.name}</p>
                   <div className="flex gap-3 text-[13px]">
                     <span className="text-[var(--cart-red)] font-bold">
                       {quantity}
@@ -90,7 +90,7 @@ function CartItems({ cartItems, RemoveFromCart, quantities, total, setTotal }) {
           </span>
           <span className="font-bold text-2xl">{total}</span>
         </div>
-        <div className="text-sm flex gap-2 items-center justify-center bg-gray-100 p-4 rounded-lg">
+        <div className="text-sm flex gap-2 items-center justify-center bg-gray-100 p-4 rounded-lg max-sm:text-[13px]">
           <div>
             <img
               src="/images/icon-carbon-neutral.svg"

@@ -32,12 +32,12 @@ export default function Card({
           setTotal={setTotal}
         />
 
-        <div className="pt-10 max-sm:pt-1">
+        <div className="pt-10">
           <small className="text-[var(--product-category-color)]">
             {item.category}
           </small>
           <div className="max-sm:flex items-center justify-between">
-            <p className="font-bold">{item?.name}</p>
+            <p>{item?.name}</p>
             <small className="text-[var(--cart-red)] font-bold">
               ${item?.price}
             </small>
