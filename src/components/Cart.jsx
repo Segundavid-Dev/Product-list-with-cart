@@ -21,12 +21,7 @@ export default function Cart({
           )}
         </h2>
         {!isActive ? (
-          <div className="flex flex-col items-center justify-center text-center p-5">
-            <img src="/images/illustration-empty-cart.svg" alt="empty cart" />
-            <p className="font-bold text-[var(--light-red)]">
-              Your added items will appear here
-            </p>
-          </div>
+          <EmptyCart />
         ) : (
           <CartItems
             cartItems={cartItems}
@@ -109,5 +104,16 @@ function CartItems({ cartItems, RemoveFromCart, quantities, total, setTotal }) {
         </button>
       </div>
     </>
+  );
+}
+
+function EmptyCart() {
+  return (
+    <div className="flex flex-col items-center justify-center text-center p-5">
+      <img src="/images/illustration-empty-cart.svg" alt="empty cart" />
+      <p className="font-bold text-[var(--light-red)]">
+        Your added items will appear here
+      </p>
+    </div>
   );
 }

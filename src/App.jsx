@@ -59,8 +59,4 @@ function App() {
   );
 }
 
-/*
-if(index)
-*/
-
 export default App;
