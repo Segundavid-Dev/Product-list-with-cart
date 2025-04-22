@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./Button";
 import Image from "./Image";
 
@@ -9,8 +9,19 @@ export default function Card({
   handleQuantityChange,
   total,
   setTotal,
+  showModal,
+  setShowModal,
 }) {
   const [isBorderActive, setIsBorderActive] = useState(false);
+
+  useEffect(
+    function () {
+      if (!showModal) {
+        setIsBorderActive(false);
+      }
+    },
+    [showModal]
+  );
 
   function showBorder() {
     setIsBorderActive(true);

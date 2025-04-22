@@ -3,7 +3,7 @@ import Product from "./components/Product";
 import CounterProvider from "./context/CounterProvider";
 import ActiveProvider from "./context/ActiveProvider";
 import CheckOut from "./components/CheckOut";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 const addCartDummyData = [];
 
@@ -13,11 +13,6 @@ function App() {
   const [quantities, setQuantities] = useState({});
   const [total, setTotal] = useState(0);
   const [showModal, setShowModal] = useState(false);
-
-  function handleShowModal() {
-    setShowModal(!showModal);
-    console.log(showModal);
-  }
 
   function handleQuantityChange(id, quantity) {
     setQuantities((prev) => ({
@@ -41,6 +36,17 @@ function App() {
     setCartItem(filtered);
   }
 
+  function handleShowModal() {
+    setShowModal(!showModal);
+    console.log(showModal);
+  }
+
+  function closeModal() {
+    // reset all state back to initial state
+    setShowModal(false);
+    setCartItem(addCartDummyData);
+  }
+
   return (
     <ActiveProvider>
       <CounterProvider>
@@ -51,6 +57,8 @@ function App() {
               handleQuantityChange={handleQuantityChange}
               total={total}
               setTotal={setTotal}
+              showModal={showModal}
+              setShowModal={setShowModal}
             />
             <Cart
               cartItems={cartItems}
@@ -61,7 +69,7 @@ function App() {
               showModal={showModal}
               handleShowModal={handleShowModal}
             />
-            {showModal && <CheckOut />}
+            {showModal && <CheckOut closeModal={closeModal} />}
           </div>
         </div>
       </CounterProvider>

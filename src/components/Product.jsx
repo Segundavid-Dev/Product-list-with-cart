@@ -6,6 +6,8 @@ export default function Product({
   handleQuantityChange,
   total,
   setTotal,
+  showModal,
+  setShowModal,
 }) {
   // create a state array to hold all fetch values
   const [data, setData] = useState([]);
@@ -31,6 +33,8 @@ export default function Product({
               handleQuantityChange={handleQuantityChange}
               total={total}
               setTotal={setTotal}
+              showModal={showModal}
+              setShowModal={setShowModal}
             />
           </li>
         ))}
