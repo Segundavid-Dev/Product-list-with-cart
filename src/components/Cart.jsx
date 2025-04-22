@@ -7,6 +7,8 @@ export default function Cart({
   quantities,
   total,
   setTotal,
+  showModal,
+  handleShowModal,
 }) {
   const { isActive, setIsActive } = useContext(ActiveContext);
 
@@ -31,6 +33,7 @@ export default function Cart({
             quantities={quantities}
             total={total}
             setTotal={setTotal}
+            handleShowModal={handleShowModal}
           />
         )}
       </div>
@@ -38,7 +41,15 @@ export default function Cart({
   );
 }
 
-function CartItems({ cartItems, RemoveFromCart, quantities, total, setTotal }) {
+function CartItems({
+  cartItems,
+  RemoveFromCart,
+  quantities,
+  total,
+  setTotal,
+  handleShowModal,
+  showModal,
+}) {
   useEffect(() => {
     const newTotal = cartItems.reduce((acc, item) => {
       const quantity = quantities[item.index] || 1;
@@ -101,7 +112,10 @@ function CartItems({ cartItems, RemoveFromCart, quantities, total, setTotal }) {
             This is a <span className="font-bold">carbon-neutral </span>delivery
           </p>
         </div>
-        <button className="bg-[var(--cart-red)] text-white w-full rounded-full py-3 cursor-pointer">
+        <button
+          className="bg-[var(--cart-red)] text-white w-full rounded-full py-3 cursor-pointer"
+          onClick={handleShowModal}
+        >
           Confirm Order
         </button>
       </div>

@@ -2,6 +2,7 @@ import Cart from "./components/Cart";
 import Product from "./components/Product";
 import CounterProvider from "./context/CounterProvider";
 import ActiveProvider from "./context/ActiveProvider";
+import CheckOut from "./components/CheckOut";
 import { useState } from "react";
 
 const addCartDummyData = [];
@@ -11,6 +12,12 @@ function App() {
   const [cartItems, setCartItem] = useState(addCartDummyData);
   const [quantities, setQuantities] = useState({});
   const [total, setTotal] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+
+  function handleShowModal() {
+    setShowModal(!showModal);
+    console.log(showModal);
+  }
 
   function handleQuantityChange(id, quantity) {
     setQuantities((prev) => ({
@@ -37,7 +44,7 @@ function App() {
   return (
     <ActiveProvider>
       <CounterProvider>
-        <div className="container mx-auto p-10">
+        <div className="container mx-auto p-10 relative">
           <div className="flex justify-between max-sm:flex-col">
             <Product
               handleAddtoCart={handleAddtoCart}
@@ -51,7 +58,10 @@ function App() {
               quantities={quantities}
               total={total}
               setTotal={setTotal}
+              showModal={showModal}
+              handleShowModal={handleShowModal}
             />
+            {showModal && <CheckOut />}
           </div>
         </div>
       </CounterProvider>
