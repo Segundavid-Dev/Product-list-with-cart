@@ -88,7 +88,7 @@ function CartItems({ cartItems, RemoveFromCart, quantities, total, setTotal }) {
           <span className="text-[var(--product-category-color)]">
             Order Total
           </span>
-          <span className="font-bold text-2xl">{total}</span>
+          <span className="font-bold text-2xl">${total}</span>
         </div>
         <div className="text-sm flex gap-2 items-center justify-center bg-gray-100 p-4 rounded-lg max-sm:text-[13px]">
           <div>
