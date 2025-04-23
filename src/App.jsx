@@ -3,7 +3,7 @@ import Product from "./components/Product";
 import CounterProvider from "./context/CounterProvider";
 import ActiveProvider from "./context/ActiveProvider";
 import CheckOut from "./components/CheckOut";
-import { useState, useContext } from "react";
+import { useState } from "react";
 
 const addCartDummyData = [];
 
@@ -22,13 +22,14 @@ function App() {
     }));
   }
 
-  function handleAddtoCart(item, index) {
+  function handleAddtoCart(item, index, value) {
     setCartItem((cartItems) => {
       // method to handle duplicate cartItem
       const exists = cartItems.some((cartItem) => cartItem.index === index);
       if (exists) return cartItems; //early return
-      return [...cartItems, { ...item, index }];
+      return [...cartItems, { ...item, index, value }];
     });
+    console.log(cartItems);
   }
 
   function RemoveFromCart(item, indexToRemove) {
@@ -68,6 +69,7 @@ function App() {
               setTotal={setTotal}
               showModal={showModal}
               handleShowModal={handleShowModal}
+              handleQuantityChange={handleQuantityChange}
             />
             {showModal && <CheckOut closeModal={closeModal} />}
           </div>

@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import { ActiveContext } from "../context/ActiveContext";
 
 export default function Cart({
@@ -9,6 +9,7 @@ export default function Cart({
   setTotal,
   showModal,
   handleShowModal,
+  handleQuantityChange,
 }) {
   const { isActive, setIsActive } = useContext(ActiveContext);
 
@@ -34,6 +35,7 @@ export default function Cart({
             total={total}
             setTotal={setTotal}
             handleShowModal={handleShowModal}
+            handleQuantityChange={handleQuantityChange}
           />
         )}
       </div>
@@ -49,6 +51,7 @@ function CartItems({
   setTotal,
   handleShowModal,
   showModal,
+  handleQuantityChange,
 }) {
   useEffect(() => {
     const newTotal = cartItems.reduce((acc, item) => {

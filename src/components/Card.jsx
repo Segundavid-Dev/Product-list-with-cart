@@ -41,6 +41,8 @@ export default function Card({
           handleQuantityChange={handleQuantityChange}
           total={total}
           setTotal={setTotal}
+          showModal={showModal}
+          setShowModal={setShowModal}
         />
 
         <div className="pt-10">

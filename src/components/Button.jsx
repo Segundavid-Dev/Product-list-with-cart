@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { ActiveContext } from "../context/ActiveContext";
 
 export default function Button({
@@ -9,11 +9,24 @@ export default function Button({
   handleQuantityChange,
   total,
   setTotal,
+  showModal,
+  setShowModal,
 }) {
   const [isClick, setIsClick] = useState(false);
   const { isActive, setIsActive } = useContext(ActiveContext);
 
   const [value, setValue] = useState(1);
+
+  useEffect(
+    function () {
+      if (!showModal) {
+        setIsClick(false);
+        setIsActive(false);
+        setValue(1);
+      }
+    },
+    [showModal, setIsActive]
+  );
 
   function DecrementCartValue() {
     if (value === 1) return; // early return
@@ -43,7 +56,7 @@ export default function Button({
       onClick={() => {
         handleClick();
         showBorder();
-        handleAddtoCart(item, index);
+        handleAddtoCart(item, index, value);
       }}
       className="select-none cursor-pointer"
     >
@@ -63,7 +76,9 @@ export default function Button({
             <small className="font-bold">{value}</small>
             <div
               className="border border-white p-1 rounded-full "
-              onClick={IncrementCartValue}
+              onClick={() => {
+                IncrementCartValue();
+              }}
             >
               <img
                 src="/images/icon-increment-quantity.svg"
