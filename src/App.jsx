@@ -26,7 +26,11 @@ function App() {
     setCartItem((cartItems) => {
       // method to handle duplicate cartItem
       const exists = cartItems.some((cartItem) => cartItem.index === index);
-      if (exists) return cartItems; //early return
+      if (exists) {
+        return cartItems.map((cartItem) =>
+          cartItem.index === index ? { ...cartItem, value } : cartItem
+        );
+      } //early return
       return [...cartItems, { ...item, index, value }];
     });
     console.log(cartItems);
