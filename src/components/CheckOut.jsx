@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export default function CheckOut({ closeModal, cartItems }) {
   return (
     <div className="flex fixed inset-0 items-center justify-center bg-[var(--overlay-black)]">
-      <div className=" bg-white rounded-2xl p-10">
+      <div className=" bg-white p-10 w-[30vw] max-h-[80vh] overflow-auto">
         <img src="/images/icon-order-confirmed.svg" alt="confirmation icon" />
         <h1 className="font-bold text-2xl">Order Confirmed</h1>
         <p className="text-[14px] text-[var(--dark-red)]">
@@ -36,7 +36,7 @@ function CartSummary({ cartItems }) {
   return (
     <>
       <div>
-        <ul className="bg-[var(--checkout-color)] rounded-lg w-[30vw]">
+        <ul className="bg-[var(--checkout-color)]">
           {cartItems.map((item, index) => (
             <li
               key={index}
@@ -65,10 +65,10 @@ function CartSummary({ cartItems }) {
             </li>
           ))}
         </ul>
-        <li className="list-none flex items-center justify-between border-gray-300 px-5 py-5 bg-[var(--checkout-color)] rounded-b-lg">
+        <li className="list-none flex items-center justify-between border-gray-300 px-5 py-5 bg-[var(--checkout-color)]">
           <div>Order Total</div>
           <div>
-            <p className="font-bold">{total}</p>
+            <p className="font-bold">${total}</p>
           </div>
         </li>
       </div>
