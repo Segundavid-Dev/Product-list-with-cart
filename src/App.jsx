@@ -75,7 +75,9 @@ function App() {
               handleShowModal={handleShowModal}
               handleQuantityChange={handleQuantityChange}
             />
-            {showModal && <CheckOut closeModal={closeModal} />}
+            {showModal && (
+              <CheckOut closeModal={closeModal} cartItems={cartItems} />
+            )}
           </div>
         </div>
       </CounterProvider>

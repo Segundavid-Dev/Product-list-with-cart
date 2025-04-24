@@ -33,16 +33,14 @@ export default function Button({
     const newValue = value - 1;
     setValue(newValue);
     handleQuantityChange(index, newValue);
-    console.log(index, newValue);
-    console.log(total);
+    handleAddtoCart(item, index, newValue);
   }
 
   function IncrementCartValue() {
     const newValue = value + 1;
     setValue(newValue);
     handleQuantityChange(index, newValue);
-    console.log(index, value);
-    console.log(total);
+    handleAddtoCart(item, index, newValue);
   }
 
   // Desktop hover functionality
@@ -56,7 +54,9 @@ export default function Button({
       onClick={() => {
         handleClick();
         showBorder();
-        handleAddtoCart(item, index, value);
+        const firstAddValue = value === 1 ? 1 : value + 1;
+        if (value === 0) setValue(firstAddValue);
+        handleAddtoCart(item, index, firstAddValue);
       }}
       className="select-none cursor-pointer"
     >
