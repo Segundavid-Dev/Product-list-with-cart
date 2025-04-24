@@ -14,19 +14,22 @@ export default function Product({
   const [data, setData] = useState([]);
   // create loading state for Spinner
   const [isLoading, setLoading] = useState(false);
-  useEffect(function () {
-    // create an async function to fetch json data
-    async function fetchData() {
-      // set Loading state to true
-      setLoading(!isLoading);
-      const response = await fetch("/data.json");
-      const data = await response.json();
-      setData(data);
-      // reset loading state back to false
-      setLoading(false);
-    }
-    fetchData();
-  }, []);
+  useEffect(
+    function () {
+      // create an async function to fetch json data
+      async function fetchData() {
+        // set Loading state to true
+        setLoading(!isLoading);
+        const response = await fetch("/data.json");
+        const data = await response.json();
+        setData(data);
+        // reset loading state back to false
+        setLoading(false);
+      }
+      fetchData();
+    },
+    [isLoading]
+  );
   return (
     <div>
       {isLoading ? (

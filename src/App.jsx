@@ -51,6 +51,7 @@ function App() {
     // reset all state back to initial state
     setShowModal(false);
     setCartItem(addCartDummyData);
+    setQuantities({});
   }
 
   return (
@@ -73,6 +74,7 @@ function App() {
               total={total}
               setTotal={setTotal}
               showModal={showModal}
+              closeModal={closeModal}
               handleShowModal={handleShowModal}
               handleQuantityChange={handleQuantityChange}
             />

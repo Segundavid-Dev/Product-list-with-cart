@@ -8,6 +8,7 @@ export default function Cart({
   total,
   setTotal,
   showModal,
+  closeModal,
   handleShowModal,
   handleQuantityChange,
 }) {
