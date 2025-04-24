@@ -14,8 +14,9 @@
 
 body {
   font-family: "Urbanist", sans-serif;
-  background-color: hsl(13, 31%, 94%);
+  background-color: #f4edeb;
   line-height: 1.7;
+  color: #c73a0f;
 }
 
 /* "bg-white p-3 rounded-full border border-[var(--product-category-color)] w-40 absolute bottom-25 right-6 hover:bg-[var(--cart-red)] hover:text-white duration-300" */
