@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export default function CheckOut({ closeModal, cartItems }) {
   return (
     <div className="flex fixed inset-0 items-center justify-center bg-[var(--overlay-black)]">
-      <div className=" bg-white p-10 w-[30vw] max-h-[80vh] overflow-auto max-sm:w-[90vw]">
+      <div className=" bg-white p-10 w-[40vw] max-h-[80vh] overflow-auto max-sm:w-[90vw] max-lg:w-[70vw]">
         <img src="/images/icon-order-confirmed.svg" alt="confirmation icon" />
         <h1 className="font-bold text-2xl">Order Confirmed</h1>
         <p className="text-[14px] text-[var(--dark-red)]">

@@ -23,7 +23,7 @@ export default function Product({
   return (
     <div>
       <h1 className="text-3xl font-extrabold">Desserts</h1>
-      <ul className="grid grid-cols-3 gap-y-[2rem] gap-x-[3rem] mt-10 max-sm:grid-cols-1 ">
+      <ul className="grid grid-cols-3 gap-y-[2rem] gap-x-[3rem] mt-10 max-sm:grid-cols-1 max-lg:grid-cols-2">
         {data.map((item, index) => (
           <li key={index}>
             <Card

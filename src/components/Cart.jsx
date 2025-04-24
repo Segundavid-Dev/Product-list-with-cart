@@ -15,7 +15,7 @@ export default function Cart({
 
   return (
     <div>
-      <div className="bg-white rounded-2xl px-10 py-5 max-sm:w-full max-sm:mt-10 max-sm:px-7">
+      <div className="bg-white rounded-2xl px-10 py-5 max-sm:w-full max-sm:mt-10 max-sm:px-7 max-lg:w-[70%] mx-auto max-lg:mt-10">
         <h2 className="text-[var(--cart-red)] font-bold">
           {isActive ? (
             <p>Your Cart ({cartItems.length})</p>
@@ -62,7 +62,7 @@ function CartItems({
   }, [cartItems, quantities, setTotal]);
   return (
     <>
-      <ul className="w-[20vw] max-sm:w-full">
+      <ul className="w-[20vw] max-sm:w-full max-lg:w-full">
         {cartItems.map((item, indexToRemove) => {
           const quantity = quantities[item.index] || 1;
           const calculatedPrice = quantity * item?.price;
