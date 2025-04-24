@@ -8,7 +8,7 @@
   --light-red: hsl(12, 20%, 44%);
   --cart-red: hsl(14, 86%, 42%);
   --product-category-color: grey;
-  --overlay-black: rgba(0, 0, 0, 0.4);
+  --overlay-black: rgba(0, 0, 0, 0.7);
   --checkout-color: hsl(13, 31%, 94%);
 }
 

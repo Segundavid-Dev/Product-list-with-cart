@@ -68,7 +68,7 @@ function CartSummary({ cartItems }) {
         <li className="list-none flex items-center justify-between border-gray-300 px-5 py-5 bg-[var(--checkout-color)] rounded-b-lg">
           <div>Order Total</div>
           <div>
-            <p className="font-bold">${total}</p>
+            <p className="font-bold">{total}</p>
           </div>
         </li>
       </div>

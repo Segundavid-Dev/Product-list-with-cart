@@ -39,8 +39,8 @@ export default function Button({
   function IncrementCartValue() {
     const newValue = value + 1;
     setValue(newValue);
-    handleQuantityChange(index, newValue);
     handleAddtoCart(item, index, newValue);
+    handleQuantityChange(index, newValue);
   }
 
   // Desktop hover functionality
@@ -48,15 +48,12 @@ export default function Button({
     setIsClick(true);
     setIsActive(true);
   }
-
   return (
     <div
       onClick={() => {
         handleClick();
         showBorder();
-        const firstAddValue = value === 1 ? 1 : value + 1;
-        if (value === 0) setValue(firstAddValue);
-        handleAddtoCart(item, index, firstAddValue);
+        handleAddtoCart(item, index, value !== 1 ? value + 1 : 1);
       }}
       className="select-none cursor-pointer"
     >

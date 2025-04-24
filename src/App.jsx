@@ -28,13 +28,15 @@ function App() {
       const exists = cartItems.some((cartItem) => cartItem.index === index);
       if (exists) {
         return cartItems.map((cartItem) =>
-          cartItem.index === index ? { ...cartItem, value } : cartItem
+          cartItem.index === index
+            ? { ...cartItem, value: value === 1 ? value + 1 : value }
+            : cartItem
         );
       } //early return
       return [...cartItems, { ...item, index, value }];
     });
-    console.log(cartItems);
   }
+  console.log(cartItems);
 
   function RemoveFromCart(item, indexToRemove) {
     const filtered = cartItems.filter((item, index) => index !== indexToRemove);
@@ -43,7 +45,6 @@ function App() {
 
   function handleShowModal() {
     setShowModal(!showModal);
-    console.log(showModal);
   }
 
   function closeModal() {
